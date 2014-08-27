@@ -2,11 +2,18 @@ language: python
 python:
 - '2.7'
 install:
-    - pip install -r requirements.txt
-    - pip install -r requirements_test.txt
-    - pip install python-coveralls
+- pip install -r requirements.txt
+- pip install -r requirements_test.txt
+- pip install python-coveralls
 script:
 - source ./environment_test.sh
 - py.test --cov ownership tests/ --cov-report=term --cov-report=html
 after_success:
-  - coveralls
+- coveralls
+deploy:
+  provider: heroku
+  api_key:
+    secure: Gk42kioLvPimXMH3nOJkUdATzVb6Hwoz/VsZ6IbQMyDr3m34DIRWrJI+tvRvb1hYZD/aACkisb/ZddMkIjlvg4Dir9e3spj54C/QsaMXVpm2GiXe+Uo5QXikudp6CIbeHIiz4Zo/IYZm4W9Lx8tatJC82AvQvZoyugjCmKCaHdo=
+  app: lr-ownership
+  on:
+    repo: LandRegistry/ownership
