@@ -16,12 +16,13 @@ def owners():
         title_number = request.json.get("title_number")
 
         if title_number:
-            title_owners = Owners.query.filter_by(title_number=title_number)
+            title_owners = _find_owners(title_number=title_number)
+
             data = {"owners":[]}
 
             if title_owners:
               for owner in title_owners:
-                owner_dict = {"index" : owner.owner_index, "lrid" : owner.lrid}
+                owner_dict = {"index" : owner.owner_index, "lrid" : str(owner.lrid)}
                 data["owners"].append(owner_dict)
 
             app.logger.info("data: %s" % (json.dumps(data)))
@@ -33,3 +34,8 @@ def owners():
             return response
         else:
             return Response("title_number field not found", status=400)
+
+def _find_owners(title_number):
+    title_owners = Owners.query.filter_by(title_number=title_number)
+    app.logger.info('Owners found %s' % title_owners.all())
+    return title_owners

@@ -1,4 +1,5 @@
 export DATABASE_URL='postgresql://localhost/ownership'
+export SETTINGS='config.DevelopmentConfig'
 
 set +o errexit
 createuser -s ownership
