@@ -25,7 +25,7 @@ def owners():
                 owner_dict = {"index" : owner.owner_index, "lrid" : str(owner.lrid)}
                 data["owners"].append(owner_dict)
 
-            app.logger.info("data: %s" % (json.dumps(data)))
+            app.logger.info("repsonse: %s" % (json.dumps(data)))
 
             response = Response(response=json.dumps(data),
                     status=200,
@@ -37,5 +37,4 @@ def owners():
 
 def _find_owners(title_number):
     title_owners = Owners.query.filter_by(title_number=title_number)
-    app.logger.info('Owners found %s' % title_owners.all())
     return title_owners
