@@ -17,3 +17,5 @@ deploy:
   app: lr-ownership
   on:
     repo: LandRegistry/ownership
+    run: "python manage.py db upgrade"
+
