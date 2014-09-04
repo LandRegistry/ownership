@@ -4,6 +4,9 @@ from flask import request, Response
 from flask_negotiate import consumes
 import json
 
+app.logger.info("\nConfiguration\n%s\n" % app.config)
+
+
 @app.route('/')
 def index():
     return "OK"
