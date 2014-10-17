@@ -58,3 +58,7 @@ class OwnershipTestCase(unittest.TestCase):
     def test_for_invalid_json(self):
         response = self.app.post('/owners', data='{"title_number":DN', content_type='application/json')
         assert response.status == '400 BAD REQUEST'
+
+    def test_health(self):
+        response = self.app.get('/health')
+        self.assertEqual(response.status, '200 OK')
