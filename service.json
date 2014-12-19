@@ -1,0 +1,16 @@
+{
+  "name": "ownership",
+  "type": "back-end",
+  "github": "https://github.com/LandRegistry/ownership",
+  "heroku": "lr-ownership",
+  "url": null,
+  "port": null,
+  "database": "true",
+  "tech": [
+    "python",
+    "flask"
+  ],
+  "dependencies": [
+    "postgres"
+  ]
+}
